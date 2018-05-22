@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ServidorMonopolio.Conexion.Mensajes;
 using ServidorMonopolio.Conexion.Mensajes.Servidor;
 using ServidorMonopolio.Conexion.Mensajes.Cliente;
+using ServidorMonopolio.Modelo.Casillas;
 
 namespace ServidorMonopolio.Conexion
 {
@@ -48,7 +49,10 @@ namespace ServidorMonopolio.Conexion
 
                 _form.Imprimir_Log("Esperando clientes...");
 
-                
+                MostrarPropiedades();
+
+
+
                 return true;
             }
             catch (Exception e)
@@ -59,6 +63,13 @@ namespace ServidorMonopolio.Conexion
 
         }
 
+        private void MostrarPropiedades()
+        {
+            foreach(Propiedad propiedad in _juego.Casillas.OfType<Propiedad>().OrderBy(o => o.Tipo))
+            {
+                _form.Mostrar_Propiedad(propiedad);
+            }
+        }
         private void AceptandoCliente(IAsyncResult AsyncResult)
         {
             _servidor = (TcpListener)AsyncResult.AsyncState;
@@ -133,11 +144,7 @@ namespace ServidorMonopolio.Conexion
                 catch (System.IO.IOException)
                 {
                     _form.Imprimir_Log("ATENCION: El jugador: " + _jugador.Nombre + " se ha desconectado.");
-                    _juego.Jugadores.Remove(_jugador);
-                    EnviarJugadorDesconectado(_jugador);
-                    _form.Mostrar_Cliente(_jugador, true);
-
-
+                    RemoverJugador(_jugador);
                 }
                 catch (Exception ex)
                 {
@@ -161,6 +168,22 @@ namespace ServidorMonopolio.Conexion
             {
                 j.EnviarMensaje(new Servidor_BorrarJugador(jugador));
             }
+        }
+
+        private void RemoverJugador(Jugador jugador)
+        {
+            foreach (Propiedad propiedad in _juego.Casillas.OfType<Propiedad>().Where(p => p.Propietario == jugador))
+            {
+                _form.Gestionar_PropietarioPropiedad(propiedad, true);
+                propiedad.Nivel_Penitencia = 1;
+                propiedad.Propietario = null;
+            }
+
+            _juego.Jugadores.Remove(jugador);
+
+            EnviarJugadorDesconectado(jugador);
+
+            _form.Mostrar_Cliente(jugador, true);
         }
 
 

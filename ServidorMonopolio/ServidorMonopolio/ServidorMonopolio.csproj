@@ -65,6 +65,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Banco.cs" />
+    <Compile Include="Modelo\Casillas\Avenida.cs" />
     <Compile Include="Modelo\Casillas\Casilla.cs" />
     <Compile Include="Modelo\Casillas\Color_Propiedad.cs" />
     <Compile Include="Modelo\Casillas\Propiedad.cs" />

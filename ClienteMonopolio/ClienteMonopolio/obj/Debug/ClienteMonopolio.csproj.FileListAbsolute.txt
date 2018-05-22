@@ -8,3 +8,13 @@ C:\Users\Felix\Documents\A Redes II\Proyecto\ClienteMonopolio\ClienteMonopolio\C
 C:\Users\Felix\Documents\A Redes II\Proyecto\ClienteMonopolio\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.pdb
 C:\Users\Felix\Documents\A Redes II\Proyecto\ClienteMonopolio\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.vInicio.resources
 C:\Users\Felix\Documents\A Redes II\Proyecto\ClienteMonopolio\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.JuegoForm.resources
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\bin\Debug\ClienteMonopolio.exe.config
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.exe
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.pdb
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.csprojResolveAssemblyReference.cache
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.JuegoForm.resources
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.vInicio.resources
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.Properties.Resources.resources
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.csproj.GenerateResource.Cache
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\bin\Debug\ClienteMonopolio.exe
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\bin\Debug\ClienteMonopolio.pdb

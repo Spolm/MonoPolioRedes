@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServidorMonopolio.Modelo;
+using ServidorMonopolio.Modelo.Casillas;
 
 namespace ServidorMonopolio.Conexion.Mensajes.Cliente
 {
@@ -16,6 +17,18 @@ namespace ServidorMonopolio.Conexion.Mensajes.Cliente
             jugador.Nombre = mensaje.PopString();
 
             ventanaServidor.Mostrar_Cliente(jugador, false);
+
+            if (jugador.Id == 1)
+            {
+                Propiedad p = juego.Casillas.OfType<Propiedad>().Where(u => u.Propietario == null).First();
+                p.Propietario = jugador;
+                ventanaServidor.Gestionar_PropietarioPropiedad(p, false);
+
+                p = juego.Casillas.OfType<Propiedad>().Where(u => u.Propietario == null).First();
+                p.Propietario = jugador;
+                ventanaServidor.Gestionar_PropietarioPropiedad(p, false);
+            }
+
 
             ventanaServidor.Imprimir_Log(DateTime.Now + " - " + jugador.Id.ToString() + ": Se le ha asignado el nombre: " + jugador.Nombre.ToUpper());
 

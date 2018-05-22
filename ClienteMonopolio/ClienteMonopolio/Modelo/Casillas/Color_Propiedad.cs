@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClienteMonopolio.Modelo.Casillas
 {
-    public enum Color_Propiedad
+    public enum Color_Avenida
     {
         Morado = 0,
         Azul_claro = 1,
