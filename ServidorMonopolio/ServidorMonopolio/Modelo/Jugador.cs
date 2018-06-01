@@ -13,7 +13,7 @@ namespace ServidorMonopolio.Modelo
     public class Jugador
     {
         private int _id;
-        private string _nombre;
+        private string _usuario;
         private int _cartera;
         private bool _detenido;
         private int _turnos_carcel;
@@ -25,9 +25,8 @@ namespace ServidorMonopolio.Modelo
         public byte[] Lectura;
         public byte[] Escritura;
 
-        public Jugador(int id)
+        public Jugador()
         {
-            this._id = id;
             this._cartera = 1500;
             this._detenido = false;
             this._posicion = 0;
@@ -38,12 +37,13 @@ namespace ServidorMonopolio.Modelo
         public int Id
         {
             get { return this._id; }
+            set { _id = value; }
         }
 
-        public string Nombre
+        public string Usuario
         {
-            get { return this._nombre; }
-            set { this._nombre = value; }
+            get { return this._usuario; }
+            set { this._usuario = value; }
         }
 
         public bool Detenido

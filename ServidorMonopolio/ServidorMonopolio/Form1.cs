@@ -16,9 +16,9 @@ namespace ServidorMonopolio
     public  partial class ServerForm : Form
     {
         Random rand = new Random();
-        Juego Juego = new Juego(4);
+        Juego Juego;
 
-        Jugador J1 = new Jugador(1);
+        Jugador J1 = new Jugador();
 
         
         Conection Conexion = new Conection();
@@ -26,9 +26,10 @@ namespace ServidorMonopolio
         public ServerForm()
         {
             InitializeComponent();
-
+            Juego = new Juego();
             cCantidadJugadores.SelectedIndex = 0;
             J1.Turno_Activo = true;
+            Gestionar_ListaRegistrados();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace ServidorMonopolio
                 return;
             }
 
-            if (!Conexion.Crear_Conexion(tIP.Text, puerto, this, Convert.ToInt32(cCantidadJugadores.SelectedItem)))
+            if (!Conexion.Crear_Conexion(tIP.Text, puerto, this, Convert.ToInt32(cCantidadJugadores.SelectedItem), Juego))
                 MessageBox.Show("Ingresa una dirección IP valida");
             else
                 bIniciar.Enabled = false;
@@ -127,9 +128,18 @@ namespace ServidorMonopolio
         private void Gestionar_ListaJugador(Jugador jugador, bool remover)
         {
             if (!remover)
-                lListaJugadores.Items.Add(jugador.Nombre);
+                lListaJugadores.Items.Add(jugador.Usuario);
             else
-                lListaJugadores.Items.Remove(jugador.Nombre);
+                lListaJugadores.Items.Remove(jugador.Usuario);
+        }
+
+        void Gestionar_ListaRegistrados()
+        {
+            lJugadoresRegistrados.Items.Clear();
+            foreach(Jugador j in Juego.Jugadores.OrderBy(j => j.Id))
+            {
+                lJugadoresRegistrados.Items.Add("Id: " + j.Id + " - Usuario: " + j.Usuario);
+            }
         }
 
         private void AddPropiedad(Propiedad propiedad)
@@ -143,12 +153,12 @@ namespace ServidorMonopolio
             {
                 int index = lListaPropiedades.Items.IndexOf(propiedad.Nombre);
                 lListaPropiedades.Items.Remove(propiedad.Nombre);
-                lListaPropiedades.Items.Insert(index , propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Nombre + ")");
+                lListaPropiedades.Items.Insert(index , propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Usuario + ")");
             }
             else
             {
-                int index = lListaPropiedades.Items.IndexOf(propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Nombre + ")");
-                lListaPropiedades.Items.Remove(propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Nombre + ")");
+                int index = lListaPropiedades.Items.IndexOf(propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Usuario + ")");
+                lListaPropiedades.Items.Remove(propiedad.Nombre + " (Propietario: " + propiedad.Propietario.Usuario + ")");
                 lListaPropiedades.Items.Insert(index, propiedad.Nombre);
             }
         }
@@ -158,6 +168,31 @@ namespace ServidorMonopolio
 
         private void ServerForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bRegistarJugador_Click(object sender, EventArgs e)
+        {
+            Jugador j = new Jugador();
+            j.Usuario = tUsuario.Text;
+
+            if (!Juego.RegistrarJugador(j))
+                MessageBox.Show("El nombre de usuario registrado ya existe");
+            else
+            {
+                MessageBox.Show("Usuario registrado con éxito");
+                Gestionar_ListaRegistrados();
+            }
 
         }
     }

@@ -24,7 +24,7 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
 
             foreach(Jugador j in juego.Jugadores.Where(u => u.Id != jugador.Id))
             {
-                AgregarElemento(j.Nombre);
+                AgregarElemento(j.Usuario);
                 AgregarElemento(j.Id.ToString());
                 AgregarElemento(j.Posicion.ToString());
                 AgregarElemento(j.Turnos_Carcel.ToString());

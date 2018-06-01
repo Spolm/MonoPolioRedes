@@ -14,7 +14,7 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
         {
             AgregarElemento(Codigos_Salidas.Salida_AsignarJugador.ToString());
             AgregarElemento(jugador.Id.ToString()); //1
-            AgregarElemento(jugador.Nombre.ToString()); //2
+            AgregarElemento(jugador.Usuario.ToString()); //2
             AgregarElemento(jugador.Posicion.ToString()); //3
             AgregarElemento(jugador.Turnos_Carcel.ToString()); //4
             AgregarElemento(jugador.Turno_Activo.ToString()); //5

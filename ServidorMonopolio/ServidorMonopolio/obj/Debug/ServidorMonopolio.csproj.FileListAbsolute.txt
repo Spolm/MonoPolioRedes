@@ -16,3 +16,5 @@ C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\Se
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\ServidorMonopolio\obj\Debug\ServidorMonopolio.ServerForm.resources
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\ServidorMonopolio\obj\Debug\ServidorMonopolio.Properties.Resources.resources
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\ServidorMonopolio\obj\Debug\ServidorMonopolio.csproj.GenerateResource.Cache
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\ServidorMonopolio\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ServidorMonopolio\ServidorMonopolio\bin\Debug\Newtonsoft.Json.xml

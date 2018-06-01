@@ -10,16 +10,24 @@ namespace ServidorMonopolio.Modelo
 {
     public class Juego
     {
-        public List<Jugador> Jugadores = new List<Jugador>();
-        public List<Casilla> Casillas = new List<Casilla>();
-        public List<Tarjeta_Arca> Tarjetas_Arca = new List<Tarjeta_Arca>();
-        public List<Tarjeta_Casualidad> Tarjetas_Casualidad = new List<Tarjeta_Casualidad>();
+        public List<Jugador> Jugadores;
+        public List<Casilla> Casillas;
+        public List<Tarjeta_Arca> Tarjetas_Arca;
+        public List<Tarjeta_Casualidad> Tarjetas_Casualidad;
         public int Fondo_Impuesto;
         public Banco Banco;
         private int _cantidadJugadores;
+        private JSON _json;
 
-        public Juego(int cantidadJugadores)
+        public Juego()
         {
+            Casillas = new List<Casilla>();
+
+            Jugadores = new List<Jugador>();
+
+            Tarjetas_Arca = new List<Tarjeta_Arca>();
+
+            Tarjetas_Casualidad = new List<Tarjeta_Casualidad>();
 
             this.Fondo_Impuesto = 0;
 
@@ -31,15 +39,19 @@ namespace ServidorMonopolio.Modelo
 
             Crear_Tarjetas_Casualidad();
 
-            _cantidadJugadores = cantidadJugadores;
-
-
+            _json = new JSON(this);
 
         }
 
         public int CantidadJugadores
         {
             get { return _cantidadJugadores; }
+            set { _cantidadJugadores = value; }
+        }
+
+        public bool RegistrarJugador(Jugador jugador)
+        {
+            return _json.RegistrarJugador(jugador);
         }
 
         private void Crear_Tablero()

@@ -25,7 +25,7 @@ namespace ServidorMonopolio.Conexion
         private PaqueteCliente _paquete;
         private int count_id = 0;
 
-        public bool Crear_Conexion(string ip, int puerto, ServerForm form, int cantidadJugadores)
+        public bool Crear_Conexion(string ip, int puerto, ServerForm form, int cantidadJugadores, Juego juego)
         {
             try
             {
@@ -43,7 +43,9 @@ namespace ServidorMonopolio.Conexion
 
                 _form.Imprimir_Log("Conexión abierta.");
 
-                _juego = new Juego(cantidadJugadores);
+                _juego = juego;
+
+                _juego.CantidadJugadores = cantidadJugadores;
 
                 _servidor.BeginAcceptTcpClient(AceptandoCliente, _servidor);
 
@@ -84,7 +86,9 @@ namespace ServidorMonopolio.Conexion
 
                 count_id++;
 
-                _jugador = new Jugador(count_id);
+                _jugador = new Jugador();
+                _jugador.Id = count_id;
+
                 _jugador.Cliente = Cliente_Entrante;
 
                 if ((_juego.Jugadores.Count+1) > _juego.CantidadJugadores)
@@ -143,7 +147,7 @@ namespace ServidorMonopolio.Conexion
                 }
                 catch (System.IO.IOException)
                 {
-                    _form.Imprimir_Log("ATENCION: El jugador: " + _jugador.Nombre + " se ha desconectado.");
+                    _form.Imprimir_Log("ATENCION: El jugador: " + _jugador.Usuario + " se ha desconectado.");
                     RemoverJugador(_jugador);
                 }
                 catch (Exception ex)
