@@ -28,6 +28,8 @@ namespace ClienteMonopolio.Conection.Mensajes
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_RechazarJugador, new Entrada_RechazarJugador());
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_AsignarJugador, new Entrada_AsignarJugador());
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_BorrarJugador, new Entrada_BorrarJugador());
+            _mensajesEntrantes.Add(Codigos_Entradas.Entrada_SesionFallida, new Entrada_SesionFallida());
+            _mensajesEntrantes.Add(Codigos_Entradas.Entrada_ConexionCerrada, new Entrada_ConexionCerrada());
         }
 
         public void EjecutarMensaje(PaqueteEntrada mensaje, ClienteMonopolio.Modelo.Jugador jugador, ClienteMonopolio.Modelo.Juego juego, ClienteMonopolio.Graficos.GestionarVentanas graficos)

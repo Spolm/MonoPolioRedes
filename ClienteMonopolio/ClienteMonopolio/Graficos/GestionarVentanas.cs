@@ -50,5 +50,7 @@ namespace ClienteMonopolio.Graficos
         {
             _ventanaInicio.HabilitarBotonInicio();
         }
+
+
     }
 }

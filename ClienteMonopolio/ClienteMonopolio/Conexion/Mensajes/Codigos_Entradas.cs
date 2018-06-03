@@ -12,5 +12,7 @@ namespace ClienteMonopolio.Conection.Mensajes
         public const int Entrada_RechazarJugador = 2;
         public const int Entrada_AsignarJugador = 3;
         public const int Entrada_BorrarJugador = 4;
+        public const int Entrada_SesionFallida = 5;
+        public const int Entrada_ConexionCerrada = 6;
     }
 }

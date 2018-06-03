@@ -14,6 +14,7 @@ namespace ClienteMonopolio.Modelo
         public List<Casilla> Casillas = new List<Casilla>();
         public List<Tarjeta_Arca> Tarjetas_Arca = new List<Tarjeta_Arca>();
         public List<Tarjeta_Casualidad> Tarjetas_Casualidad = new List<Tarjeta_Casualidad>();
+        public List<Ficha> Fichas = new List<Ficha>();
         public int Fondo_Impuesto;
         public Banco Banco;
         private int _cantidadJugadores;
@@ -31,6 +32,8 @@ namespace ClienteMonopolio.Modelo
 
             Crear_Tarjetas_Casualidad();
 
+            CrearFichas();
+
 
 
 
@@ -40,6 +43,32 @@ namespace ClienteMonopolio.Modelo
         {
             get { return _cantidadJugadores; }
             set { _cantidadJugadores = value; }
+        }
+
+        public void AsignarFichaJugador(Jugador jugador, int idFicha)
+        {
+            if (jugador.Ficha != null)
+                return;
+
+            jugador.Ficha = Fichas.Find(f => f.Id == idFicha);
+        }
+        
+        private void CrearFichas()
+        {
+            Ficha ficha;
+
+            ficha = new Ficha(1, null, "Carro");
+            Fichas.Add(ficha);
+
+            ficha = new Ficha(2, null, "Caballo");
+            Fichas.Add(ficha);
+
+            ficha = new Ficha(3, null, "Torre");
+            Fichas.Add(ficha);
+
+            ficha = new Ficha(4, null, "Avion");
+            Fichas.Add(ficha);
+
         }
 
         private void Crear_Tablero()

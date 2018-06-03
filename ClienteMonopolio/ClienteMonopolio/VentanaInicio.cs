@@ -49,7 +49,7 @@ namespace ClienteMonopolio
                     return;
                 }
 
-                if (!conexion.CrearConexion(this, ipa, nPort, tUsuario.Text))
+                if (!conexion.CrearConexion(this, ipa, nPort, tUsuario.Text, tContra.Text))
                     MessageBox.Show("Ha ocurrido un error en la conexión");
                 else
                     bJugar.Enabled = false;
@@ -79,9 +79,9 @@ namespace ClienteMonopolio
         private void InvokeJugadores(Jugador jugador, bool remove)
         {
             if (!remove)
-                lJugadores.Items.Add(jugador.Nombre+" (ID: "+ jugador.Id+")");
+                lJugadores.Items.Add(jugador.Nombre + " (ID: " + jugador.Id + " | Ficha: " + jugador.Ficha.Nombre + " | Principal: " + jugador.JugadorPrincipal.ToString().ToUpper() + ")");
             else
-                lJugadores.Items.Remove(jugador.Nombre + " (ID: " + jugador.Id + ")");
+                lJugadores.Items.Remove(jugador.Nombre + " (ID: " + jugador.Id + " | Ficha: " + jugador.Ficha.Nombre + " | Principal: " + jugador.JugadorPrincipal.ToString().ToUpper() + ")");
         }
 
         private void InvokeVentanas(JuegoForm ventajaJuego)

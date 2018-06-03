@@ -22,6 +22,8 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
             jugador.Turno_Activo = mensaje.PopBool();
             jugador.Cartera = mensaje.PopInt();
             jugador.Detenido = mensaje.PopBool();
+            juego.AsignarFichaJugador(jugador, mensaje.PopInt());
+            jugador.JugadorPrincipal = true;
 
             juego.CantidadJugadores = mensaje.PopInt();
 
@@ -38,6 +40,8 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
                 _asignarJugador.Turno_Activo = mensaje.PopBool();
                 _asignarJugador.Cartera = mensaje.PopInt();
                 _asignarJugador.Detenido = mensaje.PopBool();
+                juego.AsignarFichaJugador(_asignarJugador, mensaje.PopInt());
+                _asignarJugador.JugadorPrincipal = false;
 
                 juego.Jugadores.Add(_asignarJugador);
 

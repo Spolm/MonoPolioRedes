@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServidorMonopolio.Modelo;
+using System.Windows.Forms;
 
 namespace ServidorMonopolio.Conexion.Mensajes.Servidor
 {
@@ -19,18 +20,22 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
             AgregarElemento(jugador.Turno_Activo.ToString());
             AgregarElemento(jugador.Cartera.ToString());
             AgregarElemento(jugador.Detenido.ToString());
-            AgregarElemento(juego.CantidadJugadores.ToString());
-            AgregarElemento((juego.Jugadores.Count - 1).ToString());
+            AgregarElemento(jugador.Ficha.Id.ToString());
 
-            foreach(Jugador j in juego.Jugadores.Where(u => u.Id != jugador.Id))
+            AgregarElemento(juego.CantidadJugadores.ToString());
+            AgregarElemento((juego.JugadoresConectados.Count - 1).ToString());
+
+            foreach(Jugador j in juego.JugadoresConectados.Where(u => u.Id != jugador.Id))
             {
+
                 AgregarElemento(j.Usuario);
-                AgregarElemento(j.Id.ToString());
+                AgregarElemento(j.Id.ToString());              
                 AgregarElemento(j.Posicion.ToString());
                 AgregarElemento(j.Turnos_Carcel.ToString());
                 AgregarElemento(j.Turno_Activo.ToString());
                 AgregarElemento(j.Cartera.ToString());
                 AgregarElemento(j.Detenido.ToString());
+                AgregarElemento(j.Ficha.Id.ToString());
             }
         }
 

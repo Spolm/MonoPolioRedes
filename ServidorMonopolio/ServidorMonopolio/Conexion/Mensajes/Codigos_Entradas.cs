@@ -8,6 +8,6 @@ namespace ServidorMonopolio.Conexion.Mensajes
 {
     public static class Codigos_Entradas
     {
-        public const int Entrada_Crear_Jugador = 1;
+        public const int Entrada_IniciarSesion = 1;
     }
 }

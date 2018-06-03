@@ -20,6 +20,7 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
             AgregarElemento(jugador.Turno_Activo.ToString()); //5
             AgregarElemento(jugador.Cartera.ToString()); //6
             AgregarElemento(jugador.Detenido.ToString()); //7
+            AgregarElemento(jugador.Ficha.Id.ToString()); //8
         }
 
     }

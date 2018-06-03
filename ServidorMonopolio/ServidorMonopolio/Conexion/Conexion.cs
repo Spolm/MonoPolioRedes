@@ -23,7 +23,6 @@ namespace ServidorMonopolio.Conexion
         private Juego _juego;
         private MensajeManager _mensajeManager;
         private PaqueteCliente _paquete;
-        private int count_id = 0;
 
         public bool Crear_Conexion(string ip, int puerto, ServerForm form, int cantidadJugadores, Juego juego)
         {
@@ -46,6 +45,8 @@ namespace ServidorMonopolio.Conexion
                 _juego = juego;
 
                 _juego.CantidadJugadores = cantidadJugadores;
+
+                _juego.Connected = true;
 
                 _servidor.BeginAcceptTcpClient(AceptandoCliente, _servidor);
 
@@ -74,26 +75,25 @@ namespace ServidorMonopolio.Conexion
         }
         private void AceptandoCliente(IAsyncResult AsyncResult)
         {
+
             _servidor = (TcpListener)AsyncResult.AsyncState;
             TcpClient Cliente_Entrante = null;
             Jugador _jugador;
 
             try
             {
+                if (_servidor == null || _servidor.Server == null)
+                    return;
 
                 Cliente_Entrante = _servidor.EndAcceptTcpClient(AsyncResult);
                 _servidor.BeginAcceptTcpClient(AceptandoCliente, _servidor); //Sigue el loop para aceptar mas clientes.
 
-                count_id++;
 
                 _jugador = new Jugador();
-                _jugador.Id = count_id;
-
                 _jugador.Cliente = Cliente_Entrante;
 
-                if ((_juego.Jugadores.Count+1) > _juego.CantidadJugadores)
+                if ((_juego.JugadoresConectados.Count + 1) > _juego.CantidadJugadores)
                 {
-                    MessageBox.Show(_jugador.Id.ToString());
                     _jugador.EnviarMensaje(new Servidor_RechazarJugador(_juego));
                     return;
                 }
@@ -102,9 +102,9 @@ namespace ServidorMonopolio.Conexion
                 _form.Imprimir_Log("Recibiendo información de un cliente...");
 
 
-                lock (_juego.Jugadores)
+                lock (_juego.JugadoresConectados)
                 {
-                    _juego.Jugadores.Add(_jugador);
+                    _juego.JugadoresConectados.Add(_jugador);
                 }
 
                 _jugador.Lectura = new byte[512];
@@ -114,9 +114,13 @@ namespace ServidorMonopolio.Conexion
                 _jugador.Cliente.Client.BeginReceive(_jugador.Lectura, 0, _jugador.Lectura.Length,0 ,new AsyncCallback(RecibiendoMensajeCliente), _jugador.Cliente);
 
             }
+            catch(ObjectDisposedException)
+            {
+                MessageBox.Show("Conexión finalizada", "¡Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -126,11 +130,14 @@ namespace ServidorMonopolio.Conexion
             string mensaje_lectura = "";
             Jugador _jugador = null;
 
-            lock (_juego.Jugadores)
+            lock (_juego.JugadoresConectados)
             {
                 try
                 {
-                    _jugador = _juego.Jugadores.Find(x => x.Cliente == (TcpClient)AsyncResult.AsyncState);
+                    _jugador = _juego.JugadoresConectados.Find(x => x.Cliente == (TcpClient)AsyncResult.AsyncState);
+
+                    if (_jugador == null)
+                        return;
 
                     nCountReadBytes = _jugador.Cliente.GetStream().EndRead(AsyncResult);
 
@@ -152,23 +159,38 @@ namespace ServidorMonopolio.Conexion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.GetType().FullName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Error Pene2", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
-                    if (_jugador.Cliente.Connected)
+                    if(_jugador != null)
                     {
-                        _jugador.Lectura = new byte[512];
-                        _jugador.Cliente.Client.BeginReceive(_jugador.Lectura, 0, _jugador.Lectura.Length, 0, new AsyncCallback(RecibiendoMensajeCliente), _jugador.Cliente);
-                        //_jugador.Cliente.GetStream().BeginRead(_jugador.Lectura, 0, _jugador.Lectura.Length, RecibiendoMensajeCliente, _jugador.Cliente);
+                        if (_jugador.Cliente.Connected)
+                        {
+                            _jugador.Lectura = new byte[512];
+                            _jugador.Cliente.Client.BeginReceive(_jugador.Lectura, 0, _jugador.Lectura.Length, 0, new AsyncCallback(RecibiendoMensajeCliente), _jugador.Cliente);
+                            //_jugador.Cliente.GetStream().BeginRead(_jugador.Lectura, 0, _jugador.Lectura.Length, RecibiendoMensajeCliente, _jugador.Cliente);
+                        }
                     }
                 }
             }
         }
 
+        public void CerrarConexion()
+        {
+            foreach(Jugador _jugador in _juego.JugadoresConectados)
+            {
+                _jugador.EnviarMensaje(new Servidor_ConexionCerrada());
+            }
+            _servidor.Stop();
+            _servidor = null;
+            _juego.ReiniciarJuego();
+
+        }
+
         private void EnviarJugadorDesconectado(Jugador jugador)
         {
-            foreach(Jugador j in _juego.Jugadores)
+            foreach(Jugador j in _juego.JugadoresConectados)
             {
                 j.EnviarMensaje(new Servidor_BorrarJugador(jugador));
             }
@@ -183,7 +205,9 @@ namespace ServidorMonopolio.Conexion
                 propiedad.Propietario = null;
             }
 
-            _juego.Jugadores.Remove(jugador);
+            jugador.Ficha.Asignada = false;
+
+            _juego.JugadoresConectados.Remove(jugador);
 
             EnviarJugadorDesconectado(jugador);
 

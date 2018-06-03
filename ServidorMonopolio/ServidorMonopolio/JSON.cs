@@ -30,8 +30,8 @@ namespace ServidorMonopolio
 
                 if (_jugadores != null)
                 {
-                    _juego.Jugadores.Clear();
-                    _juego.Jugadores = _jugadores;
+                    _juego.JugadoresRegistrados.Clear();
+                    _juego.JugadoresRegistrados = _jugadores;
                 }
             }
         }
@@ -41,16 +41,19 @@ namespace ServidorMonopolio
             if (VerificarExiste(jugador))
                 return false;
 
-            if (_juego.Jugadores.Count < 1)
+            if (_juego.Connected)
+                return false;
+
+            if (_juego.JugadoresRegistrados.Count < 1)
             {
                 jugador.Id = 1;
             }
             else
             {
-                jugador.Id = (_juego.Jugadores.OrderBy(j => j.Id).Last().Id + 1);
+                jugador.Id = (_juego.JugadoresRegistrados.OrderBy(j => j.Id).Last().Id + 1);
             }
 
-            _juego.Jugadores.Add(jugador);
+            _juego.JugadoresRegistrados.Add(jugador);
 
             JsonSerializer serializer = new JsonSerializer();
 
@@ -58,7 +61,7 @@ namespace ServidorMonopolio
             using (StreamWriter jsonFile = File.AppendText(@"jugadores.txt"))
             using (JsonWriter writer = new JsonTextWriter(jsonFile))
             {
-                serializer.Serialize(writer, _juego.Jugadores);
+                serializer.Serialize(writer, _juego.JugadoresRegistrados);
             }
 
             return true;
@@ -67,7 +70,7 @@ namespace ServidorMonopolio
 
         private bool VerificarExiste(Jugador jugador)
         {
-            bool existe = _juego.Jugadores.Exists(j => j.Usuario.ToLower() == jugador.Usuario.ToLower());
+            bool existe = _juego.JugadoresRegistrados.Exists(j => j.Usuario.ToLower() == jugador.Usuario.ToLower());
 
             return existe;
         }

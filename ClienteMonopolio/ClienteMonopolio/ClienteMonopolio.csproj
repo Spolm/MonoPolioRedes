@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion\Mensajes\Entrada\Entrada_ConexionCerrada.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_AsignarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_CrearJugador.cs" />
     <Compile Include="Conexion\Mensajes\Codigos_Entradas.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_BorrarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_RechazarJugador.cs" />
+    <Compile Include="Conexion\Mensajes\Entrada\Entrada_SesionFallida.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\PaqueteEntrada.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeEntrante.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeServidor.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Modelo\Casillas\Tipo_Tren.cs" />
     <Compile Include="Modelo\Casillas\Tren.cs" />
     <Compile Include="Modelo\Dado.cs" />
+    <Compile Include="Modelo\Ficha.cs" />
     <Compile Include="Modelo\Juego.cs" />
     <Compile Include="Modelo\Jugador.cs" />
     <Compile Include="Modelo\Tarjetas\Efecto_Arca.cs" />

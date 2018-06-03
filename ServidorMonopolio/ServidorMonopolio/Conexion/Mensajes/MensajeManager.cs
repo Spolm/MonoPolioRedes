@@ -23,7 +23,7 @@ namespace ServidorMonopolio.Conexion.Mensajes
 
         private void RegistrarMensajes()
         {
-            _mensajesCliente.Add(Codigos_Entradas.Entrada_Crear_Jugador, new Cliente_CrearJugador());
+            _mensajesCliente.Add(Codigos_Entradas.Entrada_IniciarSesion, new Cliente_IniciarSesion());
         }
 
         public void EjecutarMensaje(PaqueteCliente mensaje, ServidorMonopolio.Modelo.Jugador jugador, ServidorMonopolio.Modelo.Juego juego, ServidorMonopolio.ServerForm VentanaServidor)

@@ -5,29 +5,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ServidorMonopolio.Modelo
 {
     public class Juego
     {
-        public List<Jugador> Jugadores;
+        public List<Jugador> JugadoresRegistrados;
+        public List<Jugador> JugadoresConectados;
         public List<Casilla> Casillas;
         public List<Tarjeta_Arca> Tarjetas_Arca;
         public List<Tarjeta_Casualidad> Tarjetas_Casualidad;
+        public List<Ficha> Fichas;
         public int Fondo_Impuesto;
         public Banco Banco;
+        public bool Connected;
         private int _cantidadJugadores;
         private JSON _json;
+        public bool Iniciado;
+        private Random turnoJugador;
 
-        public Juego()
+        private static Juego _juego = null;
+
+        private Juego()
+        {
+            ValoresIniciales();
+        }
+
+        public static Juego ObtenerJuego
+        {
+            get
+            {
+                if (_juego == null)
+                    _juego = new Juego();
+
+                return _juego;
+            }
+
+            private set { }
+        }
+
+        private void ValoresIniciales()
         {
             Casillas = new List<Casilla>();
 
-            Jugadores = new List<Jugador>();
+            JugadoresRegistrados = new List<Jugador>();
+            JugadoresConectados = new List<Jugador>();
 
             Tarjetas_Arca = new List<Tarjeta_Arca>();
 
             Tarjetas_Casualidad = new List<Tarjeta_Casualidad>();
+
+            Fichas = new List<Ficha>();
 
             this.Fondo_Impuesto = 0;
 
@@ -39,8 +68,58 @@ namespace ServidorMonopolio.Modelo
 
             Crear_Tarjetas_Casualidad();
 
+            CrearFichas();
+
+            Connected = false;
+
             _json = new JSON(this);
 
+            Iniciado = false;
+
+            turnoJugador = new Random();
+        }
+
+        public bool IniciarPartida()
+        {
+            if (JugadoresConectados.Count < CantidadJugadores)
+                return false;
+
+
+            Iniciado = true;
+
+            List<int> OrdenTurno = new List<int>();
+
+            for(int i = 1; i <= JugadoresConectados.Count; i++)
+            {
+                OrdenTurno.Add(i);
+            }
+
+            int index = 0;
+
+            foreach(Jugador jugador in JugadoresConectados)
+            {
+                index = turnoJugador.Next(0, OrdenTurno.Count);
+                jugador.Turno = OrdenTurno.ElementAt(index);
+                OrdenTurno.RemoveAt(index);
+            }
+
+
+            return true;
+
+        }
+
+        public void AsignarFichaJugador(Jugador jugador)
+        {
+            if (jugador.Ficha != null)
+                return;
+
+            jugador.Ficha = _juego.Fichas.Find(f => !f.Asignada);
+            jugador.Ficha.Asignada = true;
+        }
+
+        public void ReiniciarJuego()
+        {
+            ValoresIniciales();
         }
 
         public int CantidadJugadores
@@ -378,6 +457,14 @@ namespace ServidorMonopolio.Modelo
             Tarjeta = new Tarjeta_Casualidad(12, Efecto_Casualidad.Salir_Prision, "Pasaste redes, sales de prisión.");
             Tarjetas_Casualidad.Add(Tarjeta);
 
+        }
+
+        private void CrearFichas()
+        {
+            for(int i = 1; i <= 4; i++)
+            {
+                Fichas.Add(new Ficha(i));
+            }
         }
     }
 }

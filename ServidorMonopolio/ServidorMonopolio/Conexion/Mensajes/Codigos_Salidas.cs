@@ -12,5 +12,7 @@ namespace ServidorMonopolio.Conexion.Mensajes
         public const int Salida_RechazarJugador = 2;
         public const int Salida_AsignarJugador = 3;
         public const int Salida_BorrarJugador = 4;
+        public const int Salida_SesionFallida = 5;
+        public const int Salida_ConexionCerrada = 6;
     }
 }

@@ -14,6 +14,9 @@ namespace ServidorMonopolio.Modelo
     {
         private int _id;
         private string _usuario;
+        private string _password;
+        private string _nombre;
+        private string _apellido;
         private int _cartera;
         private bool _detenido;
         private int _turnos_carcel;
@@ -24,6 +27,8 @@ namespace ServidorMonopolio.Modelo
         private TcpClient _cliente;
         public byte[] Lectura;
         public byte[] Escritura;
+        private int _turno;
+        private Ficha _ficha;
 
         public Jugador()
         {
@@ -32,6 +37,8 @@ namespace ServidorMonopolio.Modelo
             this._posicion = 0;
             this._turnos_carcel = 0;
             this._turno_activo = false;
+            _turno = 0;
+            _ficha = null;
         }
 
         public int Id
@@ -82,6 +89,36 @@ namespace ServidorMonopolio.Modelo
             set { this._cliente = value; }
         }
 
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+        public string Nombre
+        {
+            get { return _nombre; }
+            set { _nombre = value; }
+        }
+
+        public string Apellido
+        {
+            get { return _apellido; }
+            set { _apellido = value; }
+        }
+
+        public int Turno
+        {
+            get { return _turno; }
+            set { _turno = value; }
+        }
+
+        public Ficha Ficha
+        {
+            get { return _ficha; }
+            set { _ficha = value; }
+        }
+
         public void Realizar_Jugada()
         {
             if (!this._turno_activo)
@@ -126,12 +163,10 @@ namespace ServidorMonopolio.Modelo
         {
             try
             {
-                lock(_cliente)
+
+                lock (_cliente)
                 {
                     string[] paquete = IMensajeServidor.GetMensaje();
-
-                    if (_cliente == null)
-                        return;
 
                     if (!_cliente.Connected)
                         return;
@@ -145,7 +180,7 @@ namespace ServidorMonopolio.Modelo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.GetType().FullName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error Pene4", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

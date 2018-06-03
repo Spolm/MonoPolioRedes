@@ -31,6 +31,8 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
             _nuevoJugador.Turno_Activo = mensaje.PopBool();
             _nuevoJugador.Cartera = mensaje.PopInt();
             _nuevoJugador.Detenido = mensaje.PopBool();
+            juego.AsignarFichaJugador(_nuevoJugador, mensaje.PopInt());
+            _nuevoJugador.JugadorPrincipal = false;
 
             juego.Jugadores.Add(_nuevoJugador);
 

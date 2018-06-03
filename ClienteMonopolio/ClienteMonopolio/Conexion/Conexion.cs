@@ -20,11 +20,11 @@ namespace ClienteMonopolio.Conection
         private Juego _juego;
         private PaqueteEntrada _paquete;
 
-        public bool CrearConexion(vInicio form, IPAddress ip, int port, string nombre)
+        public bool CrearConexion(vInicio form, IPAddress ip, int port, string nombre, string password)
         {
             try
             {
-                _jugador = new Jugador(nombre);
+                _jugador = new Jugador(nombre, password);
                 _jugador.Cliente = new TcpClient();
 
                 _juego = new Juego();

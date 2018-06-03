@@ -14,6 +14,7 @@ namespace ClienteMonopolio.Conection.Mensajes.Salida
         {
             AgregarElemento(Codigos_Salidas.Salida_Crear_Jugador.ToString());
             AgregarElemento(jugador.Nombre);
+            AgregarElemento(jugador.Password);
         }
 
     }

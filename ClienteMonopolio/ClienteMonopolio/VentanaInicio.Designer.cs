@@ -40,6 +40,8 @@
             this.bJugar = new System.Windows.Forms.Button();
             this.lJugadores = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tContra = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +58,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 168);
+            this.label2.Location = new System.Drawing.Point(13, 216);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 16);
             this.label2.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 205);
+            this.label3.Location = new System.Drawing.Point(13, 253);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 2;
@@ -91,17 +93,17 @@
             // 
             // tIP
             // 
-            this.tIP.Location = new System.Drawing.Point(127, 167);
+            this.tIP.Location = new System.Drawing.Point(127, 215);
             this.tIP.Name = "tIP";
             this.tIP.Size = new System.Drawing.Size(231, 20);
-            this.tIP.TabIndex = 5;
+            this.tIP.TabIndex = 6;
             // 
             // tPort
             // 
-            this.tPort.Location = new System.Drawing.Point(127, 205);
+            this.tPort.Location = new System.Drawing.Point(127, 253);
             this.tPort.Name = "tPort";
             this.tPort.Size = new System.Drawing.Size(231, 20);
-            this.tPort.TabIndex = 6;
+            this.tPort.TabIndex = 7;
             // 
             // label5
             // 
@@ -117,7 +119,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 134);
+            this.label6.Location = new System.Drawing.Point(12, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(187, 18);
             this.label6.TabIndex = 8;
@@ -127,10 +129,10 @@
             // bJugar
             // 
             this.bJugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bJugar.Location = new System.Drawing.Point(130, 246);
+            this.bJugar.Location = new System.Drawing.Point(130, 294);
             this.bJugar.Name = "bJugar";
             this.bJugar.Size = new System.Drawing.Size(133, 37);
-            this.bJugar.TabIndex = 9;
+            this.bJugar.TabIndex = 8;
             this.bJugar.Text = "INICIAR";
             this.bJugar.UseVisualStyleBackColor = true;
             this.bJugar.Click += new System.EventHandler(this.button1_Click);
@@ -153,11 +155,30 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Jugadores en Espera";
             // 
+            // tContra
+            // 
+            this.tContra.Location = new System.Drawing.Point(157, 124);
+            this.tContra.Name = "tContra";
+            this.tContra.Size = new System.Drawing.Size(231, 20);
+            this.tContra.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(62, 125);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 16);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Contraseña:";
+            // 
             // vInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 295);
+            this.ClientSize = new System.Drawing.Size(801, 367);
+            this.Controls.Add(this.tContra);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lJugadores);
             this.Controls.Add(this.bJugar);
@@ -195,6 +216,8 @@
         private System.Windows.Forms.Button bJugar;
         private System.Windows.Forms.ListBox lJugadores;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tContra;
+        private System.Windows.Forms.Label label8;
     }
 }
 

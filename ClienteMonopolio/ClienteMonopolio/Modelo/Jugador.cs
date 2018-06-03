@@ -14,16 +14,29 @@ namespace ClienteMonopolio.Modelo
     {
         private int _id;
         private string _nombre;
+        private string _password;
         private int _cartera;
         private bool _detenido;
         private int _turnos_carcel;
         private int _posicion;
         private bool _turno_activo;
+        private bool _jugadorPrincipal;
         public List<Tarjeta_Casualidad> Tarjeta_Casualidad = new List<Tarjeta_Casualidad>();
         public List<Tarjeta_Arca> Tarjeta_Arca = new List<Tarjeta_Arca>();
         private TcpClient _cliente;
+        private int _turno;
         public byte[] Lectura;
         public byte[] Escritura;
+        private Ficha _ficha;
+
+        public Jugador(string nombre, string password)
+        {
+            _nombre = nombre;
+            _password = password;
+            _turno = 0;
+            Lectura = new byte[512];
+            _ficha = null;
+        }
 
         public Jugador(string nombre)
         {
@@ -40,6 +53,11 @@ namespace ClienteMonopolio.Modelo
         public string Nombre
         {
             get { return this._nombre; }
+        }
+
+        public string Password
+        {
+            get { return _password; }
         }
 
         public bool Detenido
@@ -76,6 +94,24 @@ namespace ClienteMonopolio.Modelo
         {
             get { return this._cliente; }
             set { this._cliente = value; }
+        }
+
+        public int Turno
+        {
+            get { return _turno; }
+            set { _turno = value; }
+        }
+
+        public Ficha Ficha
+        {
+            get { return _ficha; }
+            set { _ficha = value; }
+        }
+
+        public bool JugadorPrincipal
+        {
+            get { return _jugadorPrincipal; }
+            set { _jugadorPrincipal = value; }
         }
 
         public void EnviarMensaje(ClienteMonopolio.Conection.Mensajes.Interfaz.IMensajeSalida IMensajeSalida)

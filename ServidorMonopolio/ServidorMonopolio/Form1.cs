@@ -15,10 +15,8 @@ namespace ServidorMonopolio
 {
     public  partial class ServerForm : Form
     {
-        Random rand = new Random();
-        Juego Juego;
 
-        Jugador J1 = new Jugador();
+
 
         
         Conection Conexion = new Conection();
@@ -26,16 +24,16 @@ namespace ServidorMonopolio
         public ServerForm()
         {
             InitializeComponent();
-            Juego = new Juego();
             cCantidadJugadores.SelectedIndex = 0;
-            J1.Turno_Activo = true;
             Gestionar_ListaRegistrados();
+            bFinalizar.Enabled = false;
+            bComenzarPartida.Enabled = false;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
+
 
         private void bApagar_Click(object sender, EventArgs e)
         {
@@ -88,10 +86,15 @@ namespace ServidorMonopolio
                 return;
             }
 
-            if (!Conexion.Crear_Conexion(tIP.Text, puerto, this, Convert.ToInt32(cCantidadJugadores.SelectedItem), Juego))
+            if (!Conexion.Crear_Conexion(tIP.Text, puerto, this, Convert.ToInt32(cCantidadJugadores.SelectedItem), Juego.ObtenerJuego))
                 MessageBox.Show("Ingresa una dirección IP valida");
             else
+            {
                 bIniciar.Enabled = false;
+                bFinalizar.Enabled = true;
+                bRegistarJugador.Enabled = false;
+                bComenzarPartida.Enabled = true;
+            }
 
 
         }
@@ -108,6 +111,18 @@ namespace ServidorMonopolio
             else
                 tLogs.Text = _mensaje;
 
+        }
+
+        public void CerrarConexion()
+        {
+            tLogs.Clear();
+            bIniciar.Enabled = true;
+            bFinalizar.Enabled = false;
+            bRegistarJugador.Enabled = true;
+            bComenzarPartida.Enabled = false;
+            lListaPropiedades.Items.Clear();
+            lListaJugadores.Items.Clear();
+            
         }
 
         public void Mostrar_Cliente(Jugador jugador, bool remover)
@@ -136,7 +151,7 @@ namespace ServidorMonopolio
         void Gestionar_ListaRegistrados()
         {
             lJugadoresRegistrados.Items.Clear();
-            foreach(Jugador j in Juego.Jugadores.OrderBy(j => j.Id))
+            foreach(Jugador j in Juego.ObtenerJuego.JugadoresRegistrados.OrderBy(j => j.Id))
             {
                 lJugadoresRegistrados.Items.Add("Id: " + j.Id + " - Usuario: " + j.Usuario);
             }
@@ -183,17 +198,42 @@ namespace ServidorMonopolio
 
         private void bRegistarJugador_Click(object sender, EventArgs e)
         {
+
             Jugador j = new Jugador();
             j.Usuario = tUsuario.Text;
+            j.Password = tContra.Text;
+            j.Nombre = tNombre.Text;
+            j.Apellido = tApellido.Text;
 
-            if (!Juego.RegistrarJugador(j))
+            if (!Juego.ObtenerJuego.RegistrarJugador(j))
                 MessageBox.Show("El nombre de usuario registrado ya existe");
             else
             {
                 MessageBox.Show("Usuario registrado con éxito");
                 Gestionar_ListaRegistrados();
+                tUsuario.Clear();
+                tContra.Clear();
+                tNombre.Clear();
+                tApellido.Clear();
             }
 
+        }
+
+        private void bFinalizar_Click(object sender, EventArgs e)
+        {
+            CerrarConexion();
+            Conexion.CerrarConexion();
+        }
+
+        private void bComenzarPartida_Click(object sender, EventArgs e)
+        {
+            if (!Juego.ObtenerJuego.IniciarPartida())
+                MessageBox.Show("Faltan jugadores para iniciar la partida. (" + Juego.ObtenerJuego.JugadoresConectados.Count + "/" + Juego.ObtenerJuego.CantidadJugadores + ")");
+            else
+            {
+                MessageBox.Show("Partida Iniciada.");
+                bComenzarPartida.Enabled = false;
+            }
         }
     }
 }
