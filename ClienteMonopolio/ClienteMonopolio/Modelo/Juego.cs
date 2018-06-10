@@ -18,13 +18,18 @@ namespace ClienteMonopolio.Modelo
         public int Fondo_Impuesto;
         public Banco Banco;
         private int _cantidadJugadores;
+        public bool PartidaIniciada;
 
-        public Juego()
+        private static Juego _juego;
+
+        private Juego()
         {
 
             this.Fondo_Impuesto = 0;
 
             this.Banco = new Banco();
+
+            PartidaIniciada = false;
 
             Crear_Tablero();
 
@@ -34,9 +39,17 @@ namespace ClienteMonopolio.Modelo
 
             CrearFichas();
 
+        }
 
+        public static Juego ObtenerJuego
+        {
+            get
+            {
+                if (_juego == null)
+                    _juego = new Juego();
 
-
+                return _juego;
+            }
         }
 
         public int CantidadJugadores
@@ -57,16 +70,68 @@ namespace ClienteMonopolio.Modelo
         {
             Ficha ficha;
 
-            ficha = new Ficha(1, null, "Carro");
+            ficha = new Ficha(1, "Rojo");
+            ficha.AsignarCoordenadaFicha(0, 495, 498);
+            ficha.AsignarCoordenadaFicha(1, 447, 510);
+            ficha.AsignarCoordenadaFicha(2, 402, 510);
+            ficha.AsignarCoordenadaFicha(3, 357, 510);
+            ficha.AsignarCoordenadaFicha(4, 311, 510);
+            ficha.AsignarCoordenadaFicha(5, 267, 510);
+            ficha.AsignarCoordenadaFicha(6, 220, 510);
+            ficha.AsignarCoordenadaFicha(7, 175, 510);
+            ficha.AsignarCoordenadaFicha(8, 129, 510);
+            ficha.AsignarCoordenadaFicha(9, 85, 510);
+            ficha.AsignarCoordenadaFicha(10, 16, 510);
+            ficha.AsignarCoordenadaFicha(11, 37, 448);
+            ficha.AsignarCoordenadaFicha(12, 37, 403);
             Fichas.Add(ficha);
 
-            ficha = new Ficha(2, null, "Caballo");
+            ficha = new Ficha(2,  "Amarillo");
+            ficha.AsignarCoordenadaFicha(0, 534, 530);
+            ficha.AsignarCoordenadaFicha(1, 468, 542);
+            ficha.AsignarCoordenadaFicha(2, 423, 542);
+            ficha.AsignarCoordenadaFicha(3, 378, 542);
+            ficha.AsignarCoordenadaFicha(4, 332, 542);
+            ficha.AsignarCoordenadaFicha(5, 288, 542);
+            ficha.AsignarCoordenadaFicha(6, 241, 542);
+            ficha.AsignarCoordenadaFicha(7, 196, 542);
+            ficha.AsignarCoordenadaFicha(8, 150, 542);
+            ficha.AsignarCoordenadaFicha(9, 106, 542);
+            ficha.AsignarCoordenadaFicha(10, 37, 542);
+            ficha.AsignarCoordenadaFicha(11, 12, 469);
+            ficha.AsignarCoordenadaFicha(12, 12, 424);
             Fichas.Add(ficha);
 
-            ficha = new Ficha(3, null, "Torre");
+            ficha = new Ficha(3, "Azul");
+            ficha.AsignarCoordenadaFicha(0, 495, 530);
+            ficha.AsignarCoordenadaFicha(1, 447, 542);
+            ficha.AsignarCoordenadaFicha(2, 402, 542);
+            ficha.AsignarCoordenadaFicha(3, 357, 542);
+            ficha.AsignarCoordenadaFicha(4, 311, 542);
+            ficha.AsignarCoordenadaFicha(5, 267, 542);
+            ficha.AsignarCoordenadaFicha(6, 220, 542);
+            ficha.AsignarCoordenadaFicha(7, 175, 542);
+            ficha.AsignarCoordenadaFicha(8, 129, 542);
+            ficha.AsignarCoordenadaFicha(9, 85, 542);
+            ficha.AsignarCoordenadaFicha(10, 16, 542);
+            ficha.AsignarCoordenadaFicha(11, 12, 448);
+            ficha.AsignarCoordenadaFicha(12, 12, 403);
             Fichas.Add(ficha);
 
-            ficha = new Ficha(4, null, "Avion");
+            ficha = new Ficha(4, "Verde");
+            ficha.AsignarCoordenadaFicha(0, 534, 498);
+            ficha.AsignarCoordenadaFicha(1, 468, 510);
+            ficha.AsignarCoordenadaFicha(2, 423, 510);
+            ficha.AsignarCoordenadaFicha(3, 378, 510);
+            ficha.AsignarCoordenadaFicha(4, 332, 510);
+            ficha.AsignarCoordenadaFicha(5, 288, 510);
+            ficha.AsignarCoordenadaFicha(6, 241, 510);
+            ficha.AsignarCoordenadaFicha(7, 196, 510);
+            ficha.AsignarCoordenadaFicha(8, 150, 510);
+            ficha.AsignarCoordenadaFicha(9, 106, 510);
+            ficha.AsignarCoordenadaFicha(10, 37, 510);
+            ficha.AsignarCoordenadaFicha(11, 37, 469);
+            ficha.AsignarCoordenadaFicha(12, 37, 424);
             Fichas.Add(ficha);
 
         }
@@ -332,7 +397,7 @@ namespace ClienteMonopolio.Modelo
             Tarjeta = new Tarjeta_Arca(5, Efecto_Arca.Recibir_200, "Ganaste 200$ por error del banco");
             Tarjetas_Arca.Add(Tarjeta);
 
-            Tarjeta = new Tarjeta_Arca(6, Efecto_Arca.Recibir_200_Inicio, "Ve hasta el inicio y oobra 200$");
+            Tarjeta = new Tarjeta_Arca(6, Efecto_Arca.Recibir_200_Inicio, "Ve hasta el inicio y cobra 200$");
             Tarjetas_Arca.Add(Tarjeta);
 
             Tarjeta = new Tarjeta_Arca(7, Efecto_Arca.Restar_20, "Dañaste la puerta del laboratorio, paga 20$");

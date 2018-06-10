@@ -24,6 +24,7 @@ namespace ServidorMonopolio.Modelo
         private bool _turno_activo;
         public List<Tarjeta_Casualidad> Tarjeta_Casualidad = new List<Tarjeta_Casualidad>();
         public List<Tarjeta_Arca> Tarjeta_Arca = new List<Tarjeta_Arca>();
+        public List<Propiedad> Propiedades = new List<Propiedad>();
         private TcpClient _cliente;
         public byte[] Lectura;
         public byte[] Escritura;
@@ -159,6 +160,7 @@ namespace ServidorMonopolio.Modelo
             }
         }
 
+
         public void EnviarMensaje(ServidorMonopolio.Conexion.Mensajes.Interfaz.IMensajeServidor IMensajeServidor)
         {
             try
@@ -180,8 +182,28 @@ namespace ServidorMonopolio.Modelo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error Pene4", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error al enviar mensaje TCP", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void AsignarPopiedad(Propiedad propiedad)
+        {
+            Propiedades.Add(propiedad);
+        }
+
+        public void RemoverPropiedad(Propiedad propiedad)
+        {
+            Propiedades.Remove(propiedad);
+        }
+
+        public void RemoverPropiedades()
+        {
+            foreach (Propiedad p in Propiedades)
+            {
+                p.Propietario = null;
+            }
+
+            Propiedades.Clear();
         }
 
     }

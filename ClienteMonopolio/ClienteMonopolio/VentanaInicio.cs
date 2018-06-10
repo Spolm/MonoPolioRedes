@@ -66,9 +66,9 @@ namespace ClienteMonopolio
 
         }
 
-        public void GestionarVentanas(JuegoForm ventanaJuego)
+        public void GestionarVentanas(bSaltar ventanaJuego)
         {
-            this.Invoke(new Action<JuegoForm>(InvokeVentanas), ventanaJuego);
+            this.Invoke(new Action<bSaltar>(InvokeVentanas), ventanaJuego);
         }
 
         public void GestionarJugadores(Jugador jugador, bool remover)
@@ -84,7 +84,7 @@ namespace ClienteMonopolio
                 lJugadores.Items.Remove(jugador.Nombre + " (ID: " + jugador.Id + " | Ficha: " + jugador.Ficha.Nombre + " | Principal: " + jugador.JugadorPrincipal.ToString().ToUpper() + ")");
         }
 
-        private void InvokeVentanas(JuegoForm ventajaJuego)
+        private void InvokeVentanas(bSaltar ventajaJuego)
         {
             this.Visible = false;
             ventajaJuego.Visible = true;

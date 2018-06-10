@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion\Mensajes\Cliente\Cliente_LanzarDado.cs" />
     <Compile Include="Conexion\Mensajes\Cliente\Cliente_IniciarSesion.cs" />
     <Compile Include="Conexion\Mensajes\Cliente\PaqueteCliente.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeServidor.cs" />
@@ -58,11 +59,13 @@
     <Compile Include="Conexion\Mensajes\Codigos_Salidas.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeCliente.cs" />
     <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="Conexion\Mensajes\Servidor\Servidor_LanzarDado.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_AsignarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_ConexionCerrada.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_CrearJugador.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_BorrarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_RechazarJugador.cs" />
+    <Compile Include="Conexion\Mensajes\Servidor\Servidor_IniciarPartida.cs" />
     <Compile Include="Conexion\Mensajes\Servidor\Servidor_SesionFallida.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

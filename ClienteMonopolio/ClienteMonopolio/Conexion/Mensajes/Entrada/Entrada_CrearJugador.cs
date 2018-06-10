@@ -49,6 +49,8 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
 
             }
 
+            juego.Jugadores.Add(jugador);
+
 
             grafico.GestionarListaJugadores(jugador, false);
 

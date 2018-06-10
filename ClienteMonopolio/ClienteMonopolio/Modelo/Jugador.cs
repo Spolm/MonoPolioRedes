@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using ClienteMonopolio.Conection.Mensajes.Salida;
 
 namespace ClienteMonopolio.Modelo
 {
@@ -23,6 +24,7 @@ namespace ClienteMonopolio.Modelo
         private bool _jugadorPrincipal;
         public List<Tarjeta_Casualidad> Tarjeta_Casualidad = new List<Tarjeta_Casualidad>();
         public List<Tarjeta_Arca> Tarjeta_Arca = new List<Tarjeta_Arca>();
+        public List<Propiedad> Propiedades = new List<Propiedad>();
         private TcpClient _cliente;
         private int _turno;
         public byte[] Lectura;
@@ -36,11 +38,13 @@ namespace ClienteMonopolio.Modelo
             _turno = 0;
             Lectura = new byte[512];
             _ficha = null;
+            _turno_activo = false;
         }
 
         public Jugador(string nombre)
         {
             _nombre = nombre;
+            _turno_activo = false;
             Lectura = new byte[512];
         }
 
@@ -112,6 +116,31 @@ namespace ClienteMonopolio.Modelo
         {
             get { return _jugadorPrincipal; }
             set { _jugadorPrincipal = value; }
+        }
+
+        public void AsignarPopiedad(Propiedad propiedad)
+        {
+            Propiedades.Add(propiedad);
+        }
+
+        public void RemoverPropiedad(Propiedad propiedad)
+        {
+            Propiedades.Remove(propiedad);
+        }
+
+        public void RemoverPropiedades()
+        {
+            foreach(Propiedad p in Propiedades)
+            {
+                p.Propietario = null;
+            }
+
+            Propiedades.Clear();
+        }
+
+        public void LanzarDado()
+        {
+            EnviarMensaje(new Salida_LanzarDado(this));
         }
 
         public void EnviarMensaje(ClienteMonopolio.Conection.Mensajes.Interfaz.IMensajeSalida IMensajeSalida)

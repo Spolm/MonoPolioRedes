@@ -17,7 +17,7 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
             AgregarElemento(jugador.Id.ToString());
             AgregarElemento(jugador.Posicion.ToString());
             AgregarElemento(jugador.Turnos_Carcel.ToString());
-            AgregarElemento(jugador.Turno_Activo.ToString());
+            AgregarElemento(false.ToString());
             AgregarElemento(jugador.Cartera.ToString());
             AgregarElemento(jugador.Detenido.ToString());
             AgregarElemento(jugador.Ficha.Id.ToString());
@@ -32,7 +32,7 @@ namespace ServidorMonopolio.Conexion.Mensajes.Servidor
                 AgregarElemento(j.Id.ToString());              
                 AgregarElemento(j.Posicion.ToString());
                 AgregarElemento(j.Turnos_Carcel.ToString());
-                AgregarElemento(j.Turno_Activo.ToString());
+                AgregarElemento(false.ToString());
                 AgregarElemento(j.Cartera.ToString());
                 AgregarElemento(j.Detenido.ToString());
                 AgregarElemento(j.Ficha.Id.ToString());

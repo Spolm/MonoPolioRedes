@@ -22,7 +22,19 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
                 return;
 
             juego.Jugadores.Remove(_jugadorBorrado);
+
             grafico.GestionarListaJugadores(_jugadorBorrado, true);
+
+            if (juego.PartidaIniciada)
+            {
+                grafico.ActualizarInfoJugadores();
+
+                if (juego.Jugadores.Count == 1)
+                {
+                    MessageBox.Show("Felicidades ganaste la partida!");
+                    grafico.CerrarVentanas();
+                }
+            }
         }
 
     }

@@ -98,6 +98,12 @@ namespace ServidorMonopolio.Conexion
                     return;
                 }
 
+                if (_juego.Iniciado)
+                {
+                    //enviar rechazo
+                    return;
+                }
+
 
                 _form.Imprimir_Log("Recibiendo información de un cliente...");
 
@@ -159,7 +165,7 @@ namespace ServidorMonopolio.Conexion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "Error Pene2", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Error General", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

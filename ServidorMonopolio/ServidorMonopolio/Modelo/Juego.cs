@@ -1,5 +1,6 @@
 ﻿using ServidorMonopolio.Modelo.Casillas;
 using ServidorMonopolio.Modelo.Tarjetas;
+using ServidorMonopolio.Conexion.Mensajes.Servidor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,11 +102,23 @@ namespace ServidorMonopolio.Modelo
                 index = turnoJugador.Next(0, OrdenTurno.Count);
                 jugador.Turno = OrdenTurno.ElementAt(index);
                 OrdenTurno.RemoveAt(index);
+
+                if (jugador.Turno == 1)
+                    jugador.Turno_Activo = true;
             }
 
+            AsigarTurnosJugadores();
 
             return true;
 
+        }
+
+        private void AsigarTurnosJugadores()
+        {
+            foreach(Jugador jugador in JugadoresConectados)
+            {
+                jugador.EnviarMensaje(new Servidor_IniciarPartida(this));
+            }
         }
 
         public void AsignarFichaJugador(Jugador jugador)
@@ -122,6 +135,73 @@ namespace ServidorMonopolio.Modelo
             ValoresIniciales();
         }
 
+
+        public void GestionarJugadaJugador(Jugador jugador)
+        {
+            jugador.Realizar_Jugada();
+
+            foreach(Jugador j in JugadoresConectados)
+            {
+                j.EnviarMensaje(new Servidor_LanzarDado(jugador));
+            }
+
+            return;
+
+            int CasillaId = jugador.Posicion;
+
+            Casilla _casilla = Casillas.Find(c => c.Posicion == CasillaId);
+
+            if (_casilla == null)
+                return;
+
+            if (_casilla.Tipo == Tipo_Casilla.Inicio)
+            {
+                return;
+            }
+
+            if (_casilla.Tipo == Tipo_Casilla.Arca_Comunal)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Casualidad)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Detencion)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Parking)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Impuesto)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Propiedad)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Servicio)
+            {
+                return;
+            }
+
+            if(_casilla.Tipo == Tipo_Casilla.Tren)
+            {
+                return;
+            }
+
+
+
+        }
         public int CantidadJugadores
         {
             get { return _cantidadJugadores; }

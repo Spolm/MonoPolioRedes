@@ -27,9 +27,9 @@ namespace ClienteMonopolio.Conection
                 _jugador = new Jugador(nombre, password);
                 _jugador.Cliente = new TcpClient();
 
-                _juego = new Juego();
+                _juego = Juego.ObtenerJuego;
 
-                JuegoForm _juegoForm = new JuegoForm();
+                bSaltar _juegoForm = bSaltar.ObtenerJuegoForm;
 
                 _graficos = new GestionarVentanas(form, _juegoForm);
 

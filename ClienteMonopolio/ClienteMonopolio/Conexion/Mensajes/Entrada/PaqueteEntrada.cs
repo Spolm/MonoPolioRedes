@@ -8,7 +8,7 @@ namespace ClienteMonopolio.Conection.Mensajes.Entrada
 {
     public class PaqueteEntrada
     {
-        private string[] _mensaje;
+        public string[] _mensaje;
         private int _posicion;
 
         public PaqueteEntrada(string[] mensaje)

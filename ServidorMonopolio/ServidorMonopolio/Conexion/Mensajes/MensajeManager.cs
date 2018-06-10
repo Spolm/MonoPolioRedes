@@ -24,6 +24,7 @@ namespace ServidorMonopolio.Conexion.Mensajes
         private void RegistrarMensajes()
         {
             _mensajesCliente.Add(Codigos_Entradas.Entrada_IniciarSesion, new Cliente_IniciarSesion());
+            _mensajesCliente.Add(Codigos_Entradas.Entrada_LanzarDado, new Cliente_LanzarDado());
         }
 
         public void EjecutarMensaje(PaqueteCliente mensaje, ServidorMonopolio.Modelo.Jugador jugador, ServidorMonopolio.Modelo.Juego juego, ServidorMonopolio.ServerForm VentanaServidor)

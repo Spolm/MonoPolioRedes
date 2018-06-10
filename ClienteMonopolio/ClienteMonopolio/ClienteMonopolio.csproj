@@ -53,12 +53,14 @@
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_BorrarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_RechazarJugador.cs" />
+    <Compile Include="Conexion\Mensajes\Entrada\Entrada_IniciarPartida.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_SesionFallida.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\PaqueteEntrada.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeEntrante.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeServidor.cs" />
     <Compile Include="Conexion\Mensajes\MensajeManager.cs" />
     <Compile Include="Conexion\Mensajes\Paquete.cs" />
+    <Compile Include="Conexion\Mensajes\Salida\Salida_LanzarDado.cs" />
     <Compile Include="Conexion\Mensajes\Salida\Salida_CrearJugador.cs" />
     <Compile Include="Graficos\GestionarVentanas.cs" />
     <Compile Include="JuegoForm.cs">
@@ -109,6 +111,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -123,7 +126,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\tablero.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FichaAmarilla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FichaRoja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FichaVerde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FichaAzul.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
