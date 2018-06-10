@@ -154,50 +154,7 @@ namespace ServidorMonopolio.Modelo
             if (_casilla == null)
                 return;
 
-            if (_casilla.Tipo == Tipo_Casilla.Inicio)
-            {
-                return;
-            }
-
-            if (_casilla.Tipo == Tipo_Casilla.Arca_Comunal)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Casualidad)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Detencion)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Parking)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Impuesto)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Propiedad)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Servicio)
-            {
-                return;
-            }
-
-            if(_casilla.Tipo == Tipo_Casilla.Tren)
-            {
-                return;
-            }
+            _casilla.EjecutarEfecto(jugador);
 
 
 
@@ -223,7 +180,7 @@ namespace ServidorMonopolio.Modelo
 
                 if (i == 0)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Inicio(); //Ya
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Inicio;
                     Casilla.Imagen = null; //Imagen
@@ -238,7 +195,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 2 || i == 17 || i == 33)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new ArcaComunal();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Arca_Comunal;
                     Casilla.Imagen = null;
@@ -253,7 +210,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 4 || i == 38)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Impuesto();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Impuesto; // 150
                     Casilla.Imagen = null;
@@ -274,7 +231,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 7 || i == 22 || i == 36)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Casualidad();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Casualidad;
                     Casilla.Imagen = null;
@@ -295,7 +252,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 10)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Carcel();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Carcel;
                     Casilla.Imagen = null;
@@ -352,7 +309,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 20)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Parking();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Parking;
                     Casilla.Imagen = null;
@@ -409,7 +366,7 @@ namespace ServidorMonopolio.Modelo
                 }
                 else if (i == 30)
                 {
-                    Casilla = new Casilla();
+                    Casilla = new Detencion();
                     Casilla.Posicion = i;
                     Casilla.Tipo = Tipo_Casilla.Detencion;
                     Casilla.Imagen = null;

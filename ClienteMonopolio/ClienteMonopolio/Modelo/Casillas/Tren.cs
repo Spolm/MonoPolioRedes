@@ -15,7 +15,7 @@ namespace ClienteMonopolio.Modelo.Casillas
         private int _penitencia_3; // 3 Trenes
         private int _penitencia_4; // 4 Trenes
 
-        public Tren(string nombre, Tipo_Tren tipo_tren, int precio, int penitencia1, int penitencia2, int penitencia3, int penitencia4, int hipoteca,
+        public Tren(string nombre, Tipo_Tren tipo_tren, int precio, int penitencia1, int penitencia2, int penitencia3, int penitencia4, int hipoteca, 
             int posicion, Tipo_Casilla tipo_casilla, Image imagen)
         {
             Nombre = nombre;
@@ -87,6 +87,11 @@ namespace ClienteMonopolio.Modelo.Casillas
             }
 
             return Valor_Penitencia;
+        }
+
+        public override void EjecutarEfecto(Jugador jugador)
+        {
+            throw new NotImplementedException();
         }
     }
 }

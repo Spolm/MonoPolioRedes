@@ -29,6 +29,11 @@ namespace ClienteMonopolio.Modelo.Casillas
             get { return this._tipo_servicio; }
         }
 
+        public override void EjecutarEfecto(Jugador jugador)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Obtener_Penitencia(int Valor_Dado, int Jugador_ID)
         {
 
@@ -42,8 +47,8 @@ namespace ClienteMonopolio.Modelo.Casillas
                 return (Valor_Dado * 4);
             else
                 return (Valor_Dado * 10);
-
-
+            
+            
         }
     }
 }

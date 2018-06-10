@@ -54,6 +54,7 @@
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_BorrarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_RechazarJugador.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_IniciarPartida.cs" />
+    <Compile Include="Conexion\Mensajes\Entrada\Entrada_LanzarDado.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\Entrada_SesionFallida.cs" />
     <Compile Include="Conexion\Mensajes\Entrada\PaqueteEntrada.cs" />
     <Compile Include="Conexion\Mensajes\Interfaz\IMensajeEntrante.cs" />
@@ -70,16 +71,22 @@
       <DependentUpon>JuegoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Banco.cs" />
-    <Compile Include="Modelo\Casillas\Casilla.cs" />
-    <Compile Include="Modelo\Casillas\Color_Propiedad.cs" />
+    <Compile Include="Modelo\Casillas\ArcaComunal.cs" />
     <Compile Include="Modelo\Casillas\Avenida.cs" />
+    <Compile Include="Modelo\Casillas\Carcel.cs" />
+    <Compile Include="Modelo\Casillas\Casilla.cs" />
+    <Compile Include="Modelo\Casillas\Casualidad.cs" />
+    <Compile Include="Modelo\Casillas\Color_Propiedad.cs" />
+    <Compile Include="Modelo\Casillas\Detencion.cs" />
+    <Compile Include="Modelo\Casillas\Impuesto.cs" />
+    <Compile Include="Modelo\Casillas\Inicio.cs" />
+    <Compile Include="Modelo\Casillas\Parking.cs" />
     <Compile Include="Modelo\Casillas\Propiedad.cs" />
     <Compile Include="Modelo\Casillas\Servicio.cs" />
     <Compile Include="Modelo\Casillas\Tipo_Casilla.cs" />
     <Compile Include="Modelo\Casillas\Tipo_Servicio.cs" />
     <Compile Include="Modelo\Casillas\Tipo_Tren.cs" />
     <Compile Include="Modelo\Casillas\Tren.cs" />
-    <Compile Include="Modelo\Dado.cs" />
     <Compile Include="Modelo\Ficha.cs" />
     <Compile Include="Modelo\Juego.cs" />
     <Compile Include="Modelo\Jugador.cs" />
@@ -141,6 +148,7 @@
   <ItemGroup>
     <None Include="Resources\FichaAzul.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

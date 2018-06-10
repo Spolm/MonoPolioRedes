@@ -29,6 +29,11 @@ namespace ServidorMonopolio.Modelo.Casillas
             get { return this._tipo_servicio; }
         }
 
+        public override void EjecutarEfecto(Jugador jugador)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Obtener_Penitencia(int Valor_Dado, int Jugador_ID)
         {
 

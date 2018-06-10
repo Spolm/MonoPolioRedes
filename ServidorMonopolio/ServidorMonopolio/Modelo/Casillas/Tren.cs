@@ -88,5 +88,10 @@ namespace ServidorMonopolio.Modelo.Casillas
 
             return Valor_Penitencia;
         }
+
+        public override void EjecutarEfecto(Jugador jugador)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

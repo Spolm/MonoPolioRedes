@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace ServidorMonopolio.Modelo.Casillas
 {
-    public class Propiedad : Casilla
+    public abstract class Propiedad : Casilla
     {
         private int _precio;
         private int _hipoteca;
         private int _nivel_penitencia;
         private Jugador _propietario;
         private string _nombre;
+
+        public abstract override void EjecutarEfecto(Jugador jugador);
 
         public int Precio
         {

@@ -75,9 +75,16 @@
     </Compile>
     <Compile Include="JSON.cs" />
     <Compile Include="Modelo\Banco.cs" />
+    <Compile Include="Modelo\Casillas\ArcaComunal.cs" />
     <Compile Include="Modelo\Casillas\Avenida.cs" />
+    <Compile Include="Modelo\Casillas\Carcel.cs" />
     <Compile Include="Modelo\Casillas\Casilla.cs" />
+    <Compile Include="Modelo\Casillas\Casualidad.cs" />
     <Compile Include="Modelo\Casillas\Color_Propiedad.cs" />
+    <Compile Include="Modelo\Casillas\Detencion.cs" />
+    <Compile Include="Modelo\Casillas\Impuesto.cs" />
+    <Compile Include="Modelo\Casillas\Inicio.cs" />
+    <Compile Include="Modelo\Casillas\Parking.cs" />
     <Compile Include="Modelo\Casillas\Propiedad.cs" />
     <Compile Include="Modelo\Casillas\Servicio.cs" />
     <Compile Include="Modelo\Casillas\Tipo_Servicio.cs" />

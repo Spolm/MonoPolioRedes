@@ -46,6 +46,11 @@ namespace ServidorMonopolio.Modelo.Casillas
             get { return _color; }
         }
 
+        public override void EjecutarEfecto(Jugador jugador)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Obtener_Penitencia(int Jugador_ID)
         {
 

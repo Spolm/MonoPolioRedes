@@ -31,6 +31,7 @@ namespace ClienteMonopolio.Conection.Mensajes
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_SesionFallida, new Entrada_SesionFallida());
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_ConexionCerrada, new Entrada_ConexionCerrada());
             _mensajesEntrantes.Add(Codigos_Entradas.Entrada_IniciarPartida, new Entrada_IniciarPartida());
+            _mensajesEntrantes.Add(Codigos_Entradas.Entrada_LanzarDado, new Entrada_LanzarDado());
         }
 
         public void EjecutarMensaje(PaqueteEntrada mensaje, ClienteMonopolio.Modelo.Jugador jugador, ClienteMonopolio.Modelo.Juego juego, ClienteMonopolio.Graficos.GestionarVentanas graficos)

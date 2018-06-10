@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ServidorMonopolio.Modelo;
 using ServidorMonopolio.Modelo.Casillas;
+using System.Windows.Forms;
 
 namespace ServidorMonopolio.Conexion.Mensajes.Cliente
 {

@@ -19,5 +19,6 @@ namespace ClienteMonopolio.Conection.Mensajes
 
         //Partida Iniciada
         public const int Entrada_IniciarPartida = 7;
+        public const int Entrada_LanzarDado = 8;
     }
 }
