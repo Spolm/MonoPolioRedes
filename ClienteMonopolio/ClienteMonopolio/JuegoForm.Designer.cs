@@ -50,7 +50,7 @@
             // 
             this.lazul.BackColor = System.Drawing.Color.Transparent;
             this.lazul.Image = global::ClienteMonopolio.Properties.Resources.FichaAzul;
-            this.lazul.Location = new System.Drawing.Point(12, 403);
+            this.lazul.Location = new System.Drawing.Point(515, 448);
             this.lazul.Name = "lazul";
             this.lazul.Size = new System.Drawing.Size(15, 15);
             this.lazul.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.lverde.BackColor = System.Drawing.Color.Transparent;
             this.lverde.Image = global::ClienteMonopolio.Properties.Resources.FichaVerde;
-            this.lverde.Location = new System.Drawing.Point(37, 424);
+            this.lverde.Location = new System.Drawing.Point(540, 469);
             this.lverde.Name = "lverde";
             this.lverde.Size = new System.Drawing.Size(15, 15);
             this.lverde.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             this.lamarilla.BackColor = System.Drawing.Color.Transparent;
             this.lamarilla.Image = global::ClienteMonopolio.Properties.Resources.FichaAmarilla;
-            this.lamarilla.Location = new System.Drawing.Point(12, 424);
+            this.lamarilla.Location = new System.Drawing.Point(515, 469);
             this.lamarilla.Name = "lamarilla";
             this.lamarilla.Size = new System.Drawing.Size(15, 15);
             this.lamarilla.TabIndex = 4;
@@ -87,7 +87,7 @@
             // 
             this.lroja.BackColor = System.Drawing.Color.Transparent;
             this.lroja.Image = global::ClienteMonopolio.Properties.Resources.FichaRoja1;
-            this.lroja.Location = new System.Drawing.Point(37, 403);
+            this.lroja.Location = new System.Drawing.Point(540, 448);
             this.lroja.Name = "lroja";
             this.lroja.Size = new System.Drawing.Size(15, 15);
             this.lroja.TabIndex = 5;
