@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ServidorMonopolio.Modelo.Casillas
 {
@@ -31,7 +32,7 @@ namespace ServidorMonopolio.Modelo.Casillas
 
         public override void EjecutarEfecto(Jugador jugador)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Soy el servicio: " + Nombre + " - Posicion: " + Posicion);
         }
 
         public int Obtener_Penitencia(int Valor_Dado, int Jugador_ID)

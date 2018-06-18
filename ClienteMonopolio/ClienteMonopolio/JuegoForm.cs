@@ -11,14 +11,14 @@ using ClienteMonopolio.Modelo;
 
 namespace ClienteMonopolio
 {
-    public partial class bSaltar : Form
+    public partial class JuegoForm : Form
     {
         Juego _juego;
         Jugador jugadorPrincipal;
 
-        private static bSaltar _juegoForm = null;
+        private static JuegoForm _juegoForm = null;
 
-        private bSaltar()
+        private JuegoForm()
         {
             InitializeComponent();
             _juego = Juego.ObtenerJuego;
@@ -36,12 +36,12 @@ namespace ClienteMonopolio
 
         }
 
-        public static bSaltar ObtenerJuegoForm
+        public static JuegoForm ObtenerJuegoForm
         {
             get
             {
                 if (_juegoForm == null)
-                    _juegoForm = new bSaltar();
+                    _juegoForm = new JuegoForm();
 
                 return _juegoForm;
             }

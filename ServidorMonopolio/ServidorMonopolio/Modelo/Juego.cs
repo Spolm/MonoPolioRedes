@@ -145,8 +145,6 @@ namespace ServidorMonopolio.Modelo
                 j.EnviarMensaje(new Servidor_LanzarDado(jugador));
             }
 
-            return;
-
             int CasillaId = jugador.Posicion;
 
             Casilla _casilla = Casillas.Find(c => c.Posicion == CasillaId);

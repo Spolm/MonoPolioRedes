@@ -17,4 +17,4 @@ C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\Cli
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.csproj.GenerateResource.Cache
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.exe
 C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.pdb
-C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.bSaltar.resources
+C:\Users\Felix\Documents\A Redes II\Proyecto\MonoPolioRedes\ClienteMonopolio\ClienteMonopolio\obj\Debug\ClienteMonopolio.JuegoForm.resources

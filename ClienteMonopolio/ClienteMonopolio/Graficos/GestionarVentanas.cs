@@ -10,9 +10,9 @@ namespace ClienteMonopolio.Graficos
     public class GestionarVentanas
     {
         private vInicio _ventanaInicio;
-        private bSaltar _ventanaJuego;
+        private JuegoForm _ventanaJuego;
 
-        public GestionarVentanas(vInicio Inicio, bSaltar Juego)
+        public GestionarVentanas(vInicio Inicio, JuegoForm Juego)
         {
             _ventanaInicio = Inicio;
             _ventanaJuego = Juego;
@@ -24,7 +24,7 @@ namespace ClienteMonopolio.Graficos
             set { _ventanaInicio = value; }
         }
 
-        public bSaltar ventanaJuego
+        public JuegoForm ventanaJuego
         {
             get { return _ventanaJuego; }
             set { _ventanaJuego = value; }

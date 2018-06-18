@@ -29,7 +29,7 @@ namespace ClienteMonopolio.Conection
 
                 _juego = Juego.ObtenerJuego;
 
-                bSaltar _juegoForm = bSaltar.ObtenerJuegoForm;
+                JuegoForm _juegoForm = JuegoForm.ObtenerJuegoForm;
 
                 _graficos = new GestionarVentanas(form, _juegoForm);
 

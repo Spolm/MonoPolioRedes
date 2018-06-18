@@ -1,6 +1,6 @@
 ﻿namespace ClienteMonopolio
 {
-    partial class bSaltar
+    partial class JuegoForm
     {
         /// <summary>
         /// Required designer variable.
